@@ -2,9 +2,9 @@
 
 namespace App\Utils;
 
-use App\Classes\Comment;
-use App\Repositories\DB;
+use App\Factories\CommentFactory;
 use App\Repositories\CommentRepository;
+use App\Repositories\DB;
 
 class CommentManager extends AbstractManager
 {
@@ -19,11 +19,7 @@ class CommentManager extends AbstractManager
         $rows = $this->commentRepository->getComments($newsId);
         $comments = [];
         foreach ($rows as $row) {
-            $comments[] = (new Comment())
-                ->setId($row['id'])
-                ->setBody($row['body'])
-                ->setCreatedAt($row['created_at'])
-                ->setNewsId($row['news_id']);
+            $comments[] = CommentFactory::create($row);
         }
 
         return $comments;

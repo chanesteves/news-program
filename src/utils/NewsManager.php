@@ -2,9 +2,9 @@
 
 namespace App\Utils;
 
-use App\Classes\News;
-use App\Repositories\DB;
+use App\Factories\NewsFactory;
 use App\Repositories\NewsRepository;
+use App\Repositories\DB;
 
 class NewsManager extends AbstractManager
 {
@@ -22,11 +22,7 @@ class NewsManager extends AbstractManager
         $rows = $this->newsRepository->getAllNews();
         $news = [];
         foreach ($rows as $row) {
-            $news[] = (new News())
-                ->setId($row['id'])
-                ->setTitle($row['title'])
-                ->setBody($row['body'])
-                ->setCreatedAt($row['created_at']);
+            $news[] = NewsFactory::create($row);
         }
 		
         return $news;
