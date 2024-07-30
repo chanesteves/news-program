@@ -2,19 +2,21 @@
 
 namespace App\Repositories;
 
+class DBConfig {
+    const DSN = 'mysql:dbname=phptest;host=127.0.0.1';
+    const USER = 'root';
+    const PASSWORD = '';
+}
+
 class DB
 {
 	private $pdo;
-
 	private static $instance = null;
 
 	private function __construct()
 	{
-		$dsn = 'mysql:dbname=phptest;host=127.0.0.1';
-		$user = 'root';
-		$password = '';
-
-		$this->pdo = new \PDO($dsn, $user, $password);
+		$this->pdo = new \PDO(DBConfig::DSN, DBConfig::USER, DBConfig::PASSWORD);
+		$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	}
 
 	public static function getInstance()
@@ -23,18 +25,24 @@ class DB
 			$c = __CLASS__;
 			self::$instance = new $c;
 		}
+
 		return self::$instance;
 	}
 
-	public function select($sql)
+	public function select($sql, $params = [])
 	{
-		$sth = $this->pdo->query($sql);
-		return $sth->fetchAll();
+		$sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+
+        return $sth->fetchAll();
 	}
 
-	public function exec($sql)
+	public function exec($sql, $params = [])
 	{
-		return $this->pdo->exec($sql);
+		$sth = $this->pdo->prepare($sql);
+        $sth->execute($params);
+
+        return $sth->rowCount();
 	}
 
 	public function lastInsertId()

@@ -25,6 +25,7 @@ class CommentManager extends AbstractManager
                 ->setCreatedAt($row['created_at'])
                 ->setNewsId($row['news_id']);
         }
+		
         return $comments;
     }
 

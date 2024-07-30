@@ -28,6 +28,7 @@ class NewsManager extends AbstractManager
                 ->setBody($row['body'])
                 ->setCreatedAt($row['created_at']);
         }
+		
         return $news;
     }
 
