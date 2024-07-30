@@ -4,5 +4,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\NewsController;
 
-$newsController = new NewsController();
-$newsController->displayNews();
+try {
+	$newsController = new NewsController();
+	$newsController->displayNews();
+} catch (\Exception $e) {
+	echo "Error occurred: " . $e->getMessage();
+}

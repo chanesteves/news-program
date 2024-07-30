@@ -15,8 +15,12 @@ class DB
 
 	private function __construct()
 	{
-		$this->pdo = new \PDO(DBConfig::DSN, DBConfig::USER, DBConfig::PASSWORD);
-		$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+		try {
+			$this->pdo = new \PDO(DBConfig::DSN, DBConfig::USER, DBConfig::PASSWORD);
+			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+		} catch (\PDOException $e) {
+			throw new \Exception('Database connection error: ' . $e->getMessage());
+        }
 	}
 
 	public static function getInstance()
