@@ -31,18 +31,26 @@ class DB
 
 	public function select($sql, $params = [])
 	{
-		$sth = $this->pdo->prepare($sql);
-        $sth->execute($params);
+		try {
+			$sth = $this->pdo->prepare($sql);
+			$sth->execute($params);
 
-        return $sth->fetchAll();
+			return $sth->fetchAll();
+		} catch (\PDOException $e) {
+            throw new \Exception("Database query error: " . $e->getMessage());
+        }
 	}
 
 	public function exec($sql, $params = [])
 	{
-		$sth = $this->pdo->prepare($sql);
-        $sth->execute($params);
+		try {
+			$sth = $this->pdo->prepare($sql);
+			$sth->execute($params);
 
-        return $sth->rowCount();
+			return $sth->rowCount();
+		} catch (\PDOException $e) {
+            throw new \Exception("Database execution error: " . $e->getMessage());
+        }
 	}
 
 	public function lastInsertId()
