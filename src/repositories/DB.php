@@ -7,9 +7,30 @@ namespace App\Repositories;
  */
 class DBConfig
 {
-    const DSN = 'mysql:dbname=phptest;host=127.0.0.1';
-    const USER = 'root';
-    const PASSWORD = '';
+    /**
+     * @var string
+     */
+    public static $dsn;
+
+    /**
+     * @var string
+     */
+    public static $user;
+
+    /**
+     * @var string
+     */
+    public static $password;
+
+    /**
+     * Initialize database configuration from environment variables.
+     */
+    public static function init()
+    {
+        self::$dsn = 'mysql:dbname=' . $_ENV['DB_NAME'] . ';host=' . $_ENV['DB_HOST'];
+        self::$user = $_ENV['DB_USER'];
+        self::$password = $_ENV['DB_PASSWORD'];
+    }
 }
 
 class DB
@@ -32,7 +53,7 @@ class DB
     private function __construct()
     {
         try {
-            $this->pdo = new \PDO(DBConfig::DSN, DBConfig::USER, DBConfig::PASSWORD);
+            $this->pdo = new \PDO(DBConfig::$dsn, DBConfig::$user, DBConfig::$password);
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             throw new \Exception('Database connection error: ' . $e->getMessage());
@@ -47,6 +68,7 @@ class DB
     public static function getInstance(): DB
     {
         if (null === self::$instance) {
+			DBConfig::init(); // Initialize the DBConfig
             self::$instance = new self();
         }
 
