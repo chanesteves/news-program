@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Repositories\DB;
-
-class CommentRepository 
+class CommentRepository
 {
     /**
      * @var DB

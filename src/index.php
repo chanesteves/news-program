@@ -7,7 +7,6 @@ use App\Controllers\NewsController;
 /**
  * Entry point of the application.
  */
-
 try {
     $newsController = new NewsController();
     $newsController->displayNews();

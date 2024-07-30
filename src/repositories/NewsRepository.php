@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-class NewsRepository 
+class NewsRepository
 {
     /**
      * @var DB

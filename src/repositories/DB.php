@@ -5,7 +5,8 @@ namespace App\Repositories;
 /**
  * Configuration class for database connection.
  */
-class DBConfig {
+class DBConfig
+{
     const DSN = 'mysql:dbname=phptest;host=127.0.0.1';
     const USER = 'root';
     const PASSWORD = '';

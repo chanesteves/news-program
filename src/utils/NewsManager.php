@@ -6,7 +6,6 @@ use App\Factories\NewsFactory;
 use App\Repositories\NewsRepository;
 use App\Repositories\DB;
 use App\Classes\News;
-use App\Classes\Comment;
 
 class NewsManager extends AbstractManager
 {
