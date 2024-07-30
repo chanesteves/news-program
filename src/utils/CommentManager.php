@@ -10,13 +10,13 @@ class CommentManager extends AbstractManager
 {
 	private $commentRepository;
 
-	protected function __construct() {
-        $this->commentRepository = new CommentRepository(DB::getInstance());
+	protected function __construct(DB $db) {
+        $this->commentRepository = new CommentRepository($db);
     }
 
-    public function listItems()
+    public function listComments($newsId)
     {
-        $rows = $this->commentRepository->getAllComments();
+        $rows = $this->commentRepository->getComments($newsId);
         $comments = [];
         foreach ($rows as $row) {
             $comments[] = (new Comment())
@@ -25,7 +25,7 @@ class CommentManager extends AbstractManager
                 ->setCreatedAt($row['created_at'])
                 ->setNewsId($row['news_id']);
         }
-		
+
         return $comments;
     }
 

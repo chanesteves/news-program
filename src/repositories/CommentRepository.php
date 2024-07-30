@@ -9,8 +9,13 @@ class CommentRepository {
         $this->db = $db;
     }
 
-    public function getAllComments() {
-        return $this->db->select('SELECT * FROM `comment`');
+    public function getComments($newsId) {
+        $sql = "SELECT * FROM `comment`";
+        if ($newsId) {
+            $sql .= " WHERE `news_id` = " . (int)$newsId;
+        }
+
+        return $this->db->select($sql);
     }
 
     public function addComment($body, $newsId) {

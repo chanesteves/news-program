@@ -11,13 +11,13 @@ class NewsManager extends AbstractManager
 	private $newsRepository;
 	private $commentManager;
 
-	protected function __construct()
+	protected function __construct(DB $db)
     {
-        $this->newsRepository = new NewsRepository(DB::getInstance());
-        $this->commentManager = CommentManager::getInstance();
+        $this->newsRepository = new NewsRepository($db);
+        $this->commentManager = CommentManager::getInstance($db);
     }
 	
-    public function listItems()
+    public function listNews()
     {
         $rows = $this->newsRepository->getAllNews();
         $news = [];
