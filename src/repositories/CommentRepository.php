@@ -2,24 +2,55 @@
 
 namespace App\Repositories;
 
-class CommentRepository {
+use App\Repositories\DB;
+
+class CommentRepository 
+{
+    /**
+     * @var DB
+     */
     private $db;
 
-    public function __construct(DB $db) {
+    /**
+     * CommentRepository constructor.
+     * 
+     * @param DB $db
+     */
+    public function __construct(DB $db)
+    {
         $this->db = $db;
     }
 
-    public function findAll()
+    /**
+     * Find all comments.
+     * 
+     * @return array
+     */
+    public function findAll(): array
     {
         return $this->db->select("SELECT * FROM `comment`");
     }
 
-    public function findByNewsId($newsId)
+    /**
+     * Find comments by news ID.
+     * 
+     * @param int $newsId
+     * @return array
+     */
+    public function findByNewsId(int $newsId): array
     {
         return $this->db->select("SELECT * FROM `comment` WHERE `news_id` = :news_id", [':news_id' => $newsId]);
     }
 
-    public function save($body, $newsId) {
+    /**
+     * Save a new comment.
+     * 
+     * @param string $body
+     * @param int $newsId
+     * @return string
+     */
+    public function save(string $body, int $newsId): string
+    {
         $sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES(:body, :createdAt, :newsId)";
         $params = [
             'body' => $body,
@@ -30,7 +61,14 @@ class CommentRepository {
         return $this->db->lastInsertId();
     }
 
-    public function delete($id) {
+    /**
+     * Delete a comment by ID.
+     * 
+     * @param int $id
+     * @return bool
+     */
+    public function delete(int $id): bool
+    {
         $sql = "DELETE FROM `comment` WHERE `id` = :id";
         $params = ['id' => $id];
         return $this->db->exec($sql, $params);

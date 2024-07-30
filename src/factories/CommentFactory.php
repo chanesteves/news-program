@@ -6,12 +6,18 @@ use App\Classes\Comment;
 
 class CommentFactory
 {
-    public static function create(array $data)
+    /**
+     * Create a new Comment instance from the provided data array.
+     * 
+     * @param array $data
+     * @return Comment
+     */
+    public static function create(array $data): Comment
     {
         return (new Comment())
             ->setId($data['id'])
             ->setBody($data['body'])
-            ->setCreatedAt($data['created_at'])
+            ->setCreatedAt(new \DateTime($data['created_at']))
             ->setNewsId($data['news_id']);
     }
 }

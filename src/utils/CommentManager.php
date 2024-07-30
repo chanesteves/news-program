@@ -5,16 +5,32 @@ namespace App\Utils;
 use App\Factories\CommentFactory;
 use App\Repositories\CommentRepository;
 use App\Repositories\DB;
+use App\Classes\Comment;
 
 class CommentManager extends AbstractManager
 {
-	private $commentRepository;
+    /**
+     * @var CommentRepository
+     */
+    private $commentRepository;
 
-	protected function __construct(DB $db) {
+    /**
+     * CommentManager constructor.
+     * 
+     * @param DB $db
+     */
+    protected function __construct(DB $db)
+    {
         $this->commentRepository = new CommentRepository($db);
     }
 
-    public function listComments($newsId)
+    /**
+     * List comments for a specific news item.
+     * 
+     * @param int $newsId
+     * @return Comment[]
+     */
+    public function listCommentsForNews(int $newsId): array
     {
         $rows = $this->commentRepository->findByNewsId($newsId);
         $comments = [];
@@ -25,12 +41,25 @@ class CommentManager extends AbstractManager
         return $comments;
     }
 
-    public function addCommentForNews($body, $newsId)
+    /**
+     * Add a comment for a specific news item.
+     * 
+     * @param string $body
+     * @param int $newsId
+     * @return string
+     */
+    public function addCommentForNews(string $body, int $newsId): string
     {
         return $this->commentRepository->save($body, $newsId);
     }
 
-    public function deleteComment($id)
+    /**
+     * Delete a comment by ID.
+     * 
+     * @param int $id
+     * @return bool
+     */
+    public function deleteComment(int $id): bool
     {
         return $this->commentRepository->delete($id);
     }

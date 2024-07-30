@@ -6,12 +6,18 @@ use App\Classes\News;
 
 class NewsFactory
 {
-    public static function create(array $data)
+    /**
+     * Create a new News instance from the provided data array.
+     * 
+     * @param array $data
+     * @return News
+     */
+    public static function create(array $data): News
     {
         return (new News())
             ->setId($data['id'])
             ->setTitle($data['title'])
             ->setBody($data['body'])
-            ->setCreatedAt($data['created_at']);
+            ->setCreatedAt(new \DateTime($data['created_at']));
     }
 }

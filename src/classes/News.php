@@ -4,53 +4,111 @@ namespace App\Classes;
 
 class News
 {
-	protected $id, $title, $body, $createdAt;
+    /**
+     * @var int
+     */
+    protected $id;
 
-	public function setId($id)
-	{
-		$this->id = $id;
+    /**
+     * @var string
+     */
+    protected $title;
 
-		return $this;
-	}
+    /**
+     * @var string
+     */
+    protected $body;
 
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @var \DateTime
+     */
+    protected $createdAt;
 
-	public function setTitle($title)
-	{
-		$this->title = $title;
+    /**
+     * Set the ID of the news.
+     * 
+     * @param int $id
+     * @return self
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the ID of the news.
+     * 
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	public function getTitle()
-	{
-		return $this->title;
-	}
+    /**
+     * Set the title of the news.
+     * 
+     * @param string $title
+     * @return self
+     */
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
 
-	public function setBody($body)
-	{
-		$this->body = $body;
+    /**
+     * Get the title of the news.
+     * 
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 
-		return $this;
-	}
+    /**
+     * Set the body of the news.
+     * 
+     * @param string $body
+     * @return self
+     */
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
+        return $this;
+    }
 
-	public function getBody()
-	{
-		return $this->body;
-	}
+    /**
+     * Get the body of the news.
+     * 
+     * @return string
+     */
+    public function getBody(): string
+    {
+        return $this->body;
+    }
 
-	public function setCreatedAt($createdAt)
-	{
-		$this->createdAt = $createdAt;
+    /**
+     * Set the creation date of the news.
+     * 
+     * @param \DateTime $createdAt
+     * @return self
+     */
+    public function setCreatedAt(\DateTime $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 
-		return $this;
-	}
-
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+    /**
+     * Get the creation date of the news.
+     * 
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
 }

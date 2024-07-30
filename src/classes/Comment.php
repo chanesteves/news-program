@@ -4,52 +4,111 @@ namespace App\Classes;
 
 class Comment
 {
-	protected $id, $body, $createdAt, $newsId;
+    /**
+     * @var int
+     */
+    protected $id;
 
-	public function setId($id)
-	{
-		$this->id = $id;
+    /**
+     * @var string
+     */
+    protected $body;
 
-		return $this;
-	}
+    /**
+     * @var \DateTime
+     */
+    protected $createdAt;
 
-	public function getId()
-	{
-		return $this->id;
-	}
-	public function setBody($body)
-	{
-		$this->body = $body;
+    /**
+     * @var int
+     */
+    protected $newsId;
 
-		return $this;
-	}
+    /**
+     * Set the ID of the comment.
+     * 
+     * @param int $id
+     * @return self
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
 
-	public function getBody()
-	{
-		return $this->body;
-	}
+    /**
+     * Get the ID of the comment.
+     * 
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	public function setCreatedAt($createdAt)
-	{
-		$this->createdAt = $createdAt;
+    /**
+     * Set the body of the comment.
+     * 
+     * @param string $body
+     * @return self
+     */
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the body of the comment.
+     * 
+     * @return string
+     */
+    public function getBody(): string
+    {
+        return $this->body;
+    }
 
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+    /**
+     * Set the creation date of the comment.
+     * 
+     * @param \DateTime $createdAt
+     * @return self
+     */
+    public function setCreatedAt(\DateTime $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 
-	public function getNewsId()
-	{
-		return $this->newsId;
-	}
+    /**
+     * Get the creation date of the comment.
+     * 
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
 
-	public function setNewsId($newsId)
-	{
-		$this->newsId = $newsId;
+    /**
+     * Set the ID of the related news.
+     * 
+     * @param int $newsId
+     * @return self
+     */
+    public function setNewsId(int $newsId): self
+    {
+        $this->newsId = $newsId;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get the ID of the related news.
+     * 
+     * @return int
+     */
+    public function getNewsId(): int
+    {
+        return $this->newsId;
+    }
 }
