@@ -3,12 +3,20 @@
 namespace App\Utils;
 
 use App\Classes\Comment;
+use App\Repositories\DB;
+use App\Repositories\CommentRepository;
 
 class CommentManager extends AbstractManager
 {
+	private $commentRepository;
+
+	protected function __construct() {
+        $this->commentRepository = new CommentRepository(DB::getInstance());
+    }
+
     public function listItems()
     {
-        $rows = $this->db->select('SELECT * FROM `comment`');
+        $rows = $this->commentRepository->getAllComments();
         $comments = [];
         foreach ($rows as $row) {
             $comments[] = (new Comment())
@@ -22,14 +30,11 @@ class CommentManager extends AbstractManager
 
     public function addCommentForNews($body, $newsId)
     {
-        $sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES(?, ?, ?)";
-        $this->db->exec($sql, [$body, date('Y-m-d'), $newsId]);
-        return $this->db->lastInsertId();
+        return $this->commentRepository->addComment($body, $newsId);
     }
 
     public function deleteComment($id)
     {
-        $sql = "DELETE FROM `comment` WHERE `id` = ?";
-        return $this->db->exec($sql, [$id]);
+        return $this->commentRepository->deleteComment($id);
     }
 }

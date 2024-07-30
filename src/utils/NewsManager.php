@@ -3,20 +3,23 @@
 namespace App\Utils;
 
 use App\Classes\News;
+use App\Repositories\DB;
+use App\Repositories\NewsRepository;
 
 class NewsManager extends AbstractManager
 {
+	private $newsRepository;
 	private $commentManager;
 
 	protected function __construct()
     {
-        parent::__construct();
+        $this->newsRepository = new NewsRepository(DB::getInstance());
         $this->commentManager = CommentManager::getInstance();
     }
 	
     public function listItems()
     {
-        $rows = $this->db->select('SELECT * FROM `news`');
+        $rows = $this->newsRepository->getAllNews();
         $news = [];
         foreach ($rows as $row) {
             $news[] = (new News())
@@ -30,9 +33,7 @@ class NewsManager extends AbstractManager
 
     public function addNews($title, $body)
     {
-        $sql = "INSERT INTO `news` (`title`, `body`, `created_at`) VALUES(?, ?, ?)";
-        $this->db->exec($sql, [$title, $body, date('Y-m-d')]);
-        return $this->db->lastInsertId();
+        return $this->newsRepository->addNews($title, $body);
     }
 
     public function deleteNews($id)
@@ -50,7 +51,6 @@ class NewsManager extends AbstractManager
             $this->commentManager->deleteComment($commentId);
         }
 
-        $sql = "DELETE FROM `news` WHERE `id` = ?";
-        return $this->db->exec($sql, [$id]);
+        return $this->newsRepository->deleteNews($id);
     }
 }
