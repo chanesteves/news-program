@@ -10,12 +10,15 @@ class CommentRepository {
     }
 
     public function getComments($newsId) {
+        
         $sql = "SELECT * FROM `comment`";
+        $params = [];
         if ($newsId) {
-            $sql .= " WHERE `news_id` = " . (int)$newsId;
+            $sql .= " WHERE `news_id` = :news_id";
+            $params['news_id'] = $newsId;
         }
 
-        return $this->db->select($sql);
+        return $this->db->select($sql, $params);
     }
 
     public function addComment($body, $newsId) {
