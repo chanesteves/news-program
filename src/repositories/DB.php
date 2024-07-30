@@ -29,7 +29,7 @@ class DBConfig
     {
         self::$dsn = 'mysql:dbname=' . $_ENV['DB_NAME'] . ';host=' . $_ENV['DB_HOST'];
         self::$user = $_ENV['DB_USER'];
-        self::$password = $_ENV['DB_PASSWORD'];
+        self::$password = $_ENV['DB_PASS'];
     }
 }
 
@@ -56,7 +56,9 @@ class DB
             $this->pdo = new \PDO(DBConfig::$dsn, DBConfig::$user, DBConfig::$password);
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new \Exception('Database connection error: ' . $e->getMessage());
+			$message = 'Database connection error: ' . $e->getMessage();
+			error_log($message);
+            throw new \Exception($message);
         }
     }
 
@@ -91,7 +93,9 @@ class DB
 
             return $sth->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            throw new \Exception("Database query error: " . $e->getMessage());
+			$message = 'Database query error: ' . $e->getMessage();
+    		error_log($message);
+            throw new \Exception($message);
         }
     }
 
@@ -111,7 +115,9 @@ class DB
 
             return $sth->rowCount();
         } catch (\PDOException $e) {
-            throw new \Exception("Database execution error: " . $e->getMessage());
+			$message = 'Database execution error: ' . $e->getMessage();
+    		error_log($message);
+            throw new \Exception($message);
         }
     }
 
