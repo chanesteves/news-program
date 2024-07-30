@@ -16,7 +16,7 @@ class CommentManager extends AbstractManager
 
     public function listComments($newsId)
     {
-        $rows = $this->commentRepository->getComments($newsId);
+        $rows = $this->commentRepository->findByNewsId($newsId);
         $comments = [];
         foreach ($rows as $row) {
             $comments[] = CommentFactory::create($row);
@@ -27,11 +27,11 @@ class CommentManager extends AbstractManager
 
     public function addCommentForNews($body, $newsId)
     {
-        return $this->commentRepository->addComment($body, $newsId);
+        return $this->commentRepository->save($body, $newsId);
     }
 
     public function deleteComment($id)
     {
-        return $this->commentRepository->deleteComment($id);
+        return $this->commentRepository->delete($id);
     }
 }

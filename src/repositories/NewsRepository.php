@@ -9,11 +9,11 @@ class NewsRepository {
         $this->db = $db;
     }
 
-    public function getAllNews() {
-        return $this->db->select('SELECT * FROM `news`');
+    public function findAll() {
+        return $this->db->select("SELECT * FROM `news`");
     }
 
-    public function addNews($title, $body) {
+    public function save($title, $body) {
         $sql = "INSERT INTO `news` (`title`, `body`, `created_at`) VALUES(:title, :body, :createdAt)";
         $params = [
             'title' => $title,
@@ -24,7 +24,7 @@ class NewsRepository {
         return $this->db->lastInsertId();
     }
 
-    public function deleteNews($id) {
+    public function delete($id) {
         $sql = "DELETE FROM `news` WHERE `id` = :id";
         $params = ['id' => $id];
         return $this->db->exec($sql, $params);

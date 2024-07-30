@@ -9,19 +9,17 @@ class CommentRepository {
         $this->db = $db;
     }
 
-    public function getComments($newsId) {
-        
-        $sql = "SELECT * FROM `comment`";
-        $params = [];
-        if ($newsId) {
-            $sql .= " WHERE `news_id` = :news_id";
-            $params['news_id'] = $newsId;
-        }
-
-        return $this->db->select($sql, $params);
+    public function findAll()
+    {
+        return $this->db->select("SELECT * FROM `comment`");
     }
 
-    public function addComment($body, $newsId) {
+    public function findByNewsId($newsId)
+    {
+        return $this->db->select("SELECT * FROM `comment` WHERE `news_id` = :news_id", [':news_id' => $newsId]);
+    }
+
+    public function save($body, $newsId) {
         $sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES(:body, :createdAt, :newsId)";
         $params = [
             'body' => $body,
@@ -32,7 +30,7 @@ class CommentRepository {
         return $this->db->lastInsertId();
     }
 
-    public function deleteComment($id) {
+    public function delete($id) {
         $sql = "DELETE FROM `comment` WHERE `id` = :id";
         $params = ['id' => $id];
         return $this->db->exec($sql, $params);

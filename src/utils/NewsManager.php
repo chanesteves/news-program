@@ -19,7 +19,7 @@ class NewsManager extends AbstractManager
 	
     public function listNews()
     {
-        $rows = $this->newsRepository->getAllNews();
+        $rows = $this->newsRepository->findAll();
         $news = [];
         foreach ($rows as $row) {
             $news[] = NewsFactory::create($row);
@@ -30,7 +30,7 @@ class NewsManager extends AbstractManager
 
     public function addNews($title, $body)
     {
-        return $this->newsRepository->addNews($title, $body);
+        return $this->newsRepository->save($title, $body);
     }
 
     public function deleteNews($id)
@@ -48,6 +48,6 @@ class NewsManager extends AbstractManager
             $this->commentManager->deleteComment($commentId);
         }
 
-        return $this->newsRepository->deleteNews($id);
+        return $this->newsRepository->delete($id);
     }
 }
