@@ -23,11 +23,10 @@ class NewsController
     /**
      * NewsController constructor.
      */
-    public function __construct()
+    public function __construct(NewsManager $newsManager, CommentManager $commentManager)
     {
-        $db = DB::getInstance();
-        $this->newsManager = NewsManager::getInstance($db);
-        $this->commentManager = CommentManager::getInstance($db);
+        $this->newsManager = $newsManager;
+        $this->commentManager = $commentManager;
     }
 
     /**

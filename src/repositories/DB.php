@@ -50,16 +50,20 @@ class DB
      * 
      * @throws \Exception
      */
-    private function __construct()
+    public function __construct(\PDO $pdo = null)
     {
-        try {
-            $this->pdo = new \PDO(DBConfig::$dsn, DBConfig::$user, DBConfig::$password);
-            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
-			$message = 'Database connection error: ' . $e->getMessage();
-			error_log($message);
-            throw new \Exception($message);
-        }
+		if ($pdo) {
+            $this->pdo = $pdo;
+        } else {
+			try {
+				$this->pdo = new \PDO(DBConfig::$dsn, DBConfig::$user, DBConfig::$password);
+				$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+			} catch (\PDOException $e) {
+				$message = 'Database connection error: ' . $e->getMessage();
+				error_log($message);
+				throw new \Exception($message);
+			}
+		}
     }
 
     /**

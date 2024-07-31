@@ -1,4 +1,9 @@
-.env
+# Ignore log files and directories
 /logs/*
 !/logs/.gitkeep
-vendor
+
+# Composer dependencies
+/vendor/
+
+# Ignore .env files
+.env
