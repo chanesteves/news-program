@@ -2,14 +2,14 @@
 
 ## 1. Installation
 
-- Create an empty database named `phptest`" on your MySQL server.
-- Import the dbdump.sql in the `phptest` database.
+- Create an empty database named `phptest` on your MySQL server.
+- Import the `dbdump.sql` in the `phptest` database.
 - Copy `.env.dist` file to `.env` and put your MySQL server credentials in it.
 - Install the packages: `composer install`.
 - You can run the script in your shell: `composer start` or `php src/index.php`.
 - You can run the test in your shell: `composer test` or `vendor/bin/phpunit --testdox`.
 
-## 2. Expectations
+## 2. Improvements
 
 This simple application works, but initially built with very old-style monolithic codebase, so did the following improvements:
 
