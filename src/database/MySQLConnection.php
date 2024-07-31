@@ -88,8 +88,8 @@ class MySQLConnection
 
             return $sth->rowCount();
         } catch (\PDOException $e) {
-			$message = 'Database execution error: ' . $e->getMessage();
-    		error_log($message);
+            $message = 'Database execution error: ' . $e->getMessage();
+            error_log($message);
             throw new \Exception($message);
         }
     }
