@@ -21,17 +21,17 @@ class MySQLConnection
      */
     public function __construct(\PDO $pdo = null)
     {
-		if ($pdo) {
+        if ($pdo) {
             $this->pdo = $pdo;
         } else {
-			try {
-				$this->pdo = new \PDO(MySQLConfig::$dsn, MySQLConfig::$user, MySQLConfig::$password);
-				$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-			} catch (\PDOException $e) {
-				$message = 'Database connection error: ' . $e->getMessage();
-				error_log($message);
-				throw new \Exception($message);
-			}
+            try {
+                $this->pdo = new \PDO(MySQLConfig::$dsn, MySQLConfig::$user, MySQLConfig::$password);
+                $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            } catch (\PDOException $e) {
+                $message = 'Database connection error: ' . $e->getMessage();
+                error_log($message);
+                throw new \Exception($message);
+            }
 		}
     }
 
@@ -43,7 +43,7 @@ class MySQLConnection
     public static function getInstance(): MySQLConnection
     {
         if (null === self::$instance) {
-			MySQLConfig::init(); // Initialize the MySQLConfig
+            MySQLConfig::init(); // Initialize the MySQLConfig
             self::$instance = new self();
         }
 
@@ -66,8 +66,8 @@ class MySQLConnection
 
             return $sth->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-			$message = 'Database query error: ' . $e->getMessage();
-    		error_log($message);
+            $message = 'Database query error: ' . $e->getMessage();
+            error_log($message);
             throw new \Exception($message);
         }
     }
