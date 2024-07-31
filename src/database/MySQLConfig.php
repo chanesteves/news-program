@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Database;
 
 /**
  * Configuration class for database connection.
  */
-class DBConfig
+class MySQLConfig
 {
     /**
      * @var string

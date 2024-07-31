@@ -2,19 +2,21 @@
 
 namespace App\Repositories;
 
+use App\Database\MySQLConnection;
+
 class NewsRepository
 {
     /**
-     * @var DB
+     * @var MySQLConnection
      */
     private $db;
 
     /**
      * NewsRepository constructor.
      * 
-     * @param DB $db
+     * @param MySQLConnection $db
      */
-    public function __construct(DB $db)
+    public function __construct(MySQLConnection $db)
     {
         $this->db = $db;
     }

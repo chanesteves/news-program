@@ -1,9 +1,9 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-use App\Utils\CommentManager;
-use App\Repositories\DB;
 use App\Classes\Comment;
+use App\Database\MySQLConnection;
+use App\Utils\CommentManager;
+use PHPUnit\Framework\TestCase;
 
 class CommentManagerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class CommentManagerTest extends TestCase
 
     public function testListCommentsForNews()
     {
-        $dbMock = Mockery::mock(DB::class);
+        $dbMock = Mockery::mock(MySQLConnection::class);
         $dbMock->shouldReceive('select')
                ->with('SELECT * FROM `comment` WHERE `news_id` = :news_id', [':news_id' => 1])
                ->andReturn([

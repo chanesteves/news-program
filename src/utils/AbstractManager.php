@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-use App\Repositories\DB;
+use App\Database\MySQLConnection;
 
 abstract class AbstractManager
 {
@@ -14,10 +14,10 @@ abstract class AbstractManager
     /**
      * Get the instance of the derived manager class.
      * 
-     * @param DB $db
+     * @param MySQLConnection $db
      * @return static
      */
-    public static function getInstance(DB $db)
+    public static function getInstance(MySQLConnection $db)
     {
         $class = static::class;
         if (!isset(self::$instances[$class])) {

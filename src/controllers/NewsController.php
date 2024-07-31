@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Repositories\DB;
 use App\Utils\NewsManager;
 use App\Utils\CommentManager;
 use App\Classes\News;

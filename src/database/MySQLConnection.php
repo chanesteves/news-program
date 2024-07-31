@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Database;
 
-class DB
+class MySQLConnection
 {
     /**
      * @var \PDO
@@ -10,12 +10,12 @@ class DB
     private $pdo;
 
     /**
-     * @var DB|null
+     * @var MySQLConnection|null
      */
     private static $instance = null;
 
     /**
-     * DB constructor.
+     * MySQLConnection constructor.
      * 
      * @throws \Exception
      */
@@ -25,7 +25,7 @@ class DB
             $this->pdo = $pdo;
         } else {
 			try {
-				$this->pdo = new \PDO(DBConfig::$dsn, DBConfig::$user, DBConfig::$password);
+				$this->pdo = new \PDO(MySQLConfig::$dsn, MySQLConfig::$user, MySQLConfig::$password);
 				$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			} catch (\PDOException $e) {
 				$message = 'Database connection error: ' . $e->getMessage();
@@ -36,14 +36,14 @@ class DB
     }
 
     /**
-     * Get the instance of the DB class.
+     * Get the instance of the MySQLConnection class.
      * 
-     * @return DB
+     * @return MySQLConnection
      */
-    public static function getInstance(): DB
+    public static function getInstance(): MySQLConnection
     {
         if (null === self::$instance) {
-			DBConfig::init(); // Initialize the DBConfig
+			MySQLConfig::init(); // Initialize the MySQLConfig
             self::$instance = new self();
         }
 

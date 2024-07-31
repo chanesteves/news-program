@@ -2,9 +2,9 @@
 
 namespace App\Utils;
 
+use App\Database\MySQLConnection;
 use App\Factories\CommentFactory;
 use App\Repositories\CommentRepository;
-use App\Repositories\DB;
 use App\Classes\Comment;
 
 class CommentManager extends AbstractManager
@@ -17,9 +17,9 @@ class CommentManager extends AbstractManager
     /**
      * CommentManager constructor.
      * 
-     * @param DB $db
+     * @param MySQLConnection $db
      */
-    protected function __construct(DB $db)
+    protected function __construct(MySQLConnection $db)
     {
         $this->commentRepository = new CommentRepository($db);
     }

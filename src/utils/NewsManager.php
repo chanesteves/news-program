@@ -2,10 +2,10 @@
 
 namespace App\Utils;
 
+use App\Classes\News;
+use App\Database\MySQLConnection;
 use App\Factories\NewsFactory;
 use App\Repositories\NewsRepository;
-use App\Repositories\DB;
-use App\Classes\News;
 
 class NewsManager extends AbstractManager
 {
@@ -22,9 +22,9 @@ class NewsManager extends AbstractManager
     /**
      * NewsManager constructor.
      * 
-     * @param DB $db
+     * @param MySQLConnection $db
      */
-    protected function __construct(DB $db)
+    protected function __construct(MySQLConnection $db)
     {
         $this->newsRepository = new NewsRepository($db);
         $this->commentManager = CommentManager::getInstance($db);

@@ -3,7 +3,7 @@
 require_once __DIR__ . '/bootstrap.php';
 
 use App\Controllers\NewsController;
-use App\Repositories\DB;
+use App\Database\MySQLConnection;
 use App\Utils\NewsManager;
 use App\Utils\CommentManager;
 
@@ -11,7 +11,7 @@ use App\Utils\CommentManager;
  * Entry point of the application.
  */
 try {
-	$db = DB::getInstance();
+	$db = MySQLConnection::getInstance();
 
 	$newsManager = NewsManager::getInstance($db);
     $commentManager = CommentManager::getInstance($db);

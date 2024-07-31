@@ -1,9 +1,9 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-use App\Utils\NewsManager;
-use App\Repositories\DB;
 use App\Classes\News;
+use App\Database\MySQLConnection;
+use App\Utils\NewsManager;
+use PHPUnit\Framework\TestCase;
 
 class NewsManagerTest extends TestCase
 {
@@ -14,7 +14,7 @@ class NewsManagerTest extends TestCase
 
     public function testListNews()
     {
-        $dbMock = Mockery::mock(DB::class);
+        $dbMock = Mockery::mock(MySQLConnection::class);
         $dbMock->shouldReceive('select')
                ->with('SELECT * FROM `news`')
                ->andReturn([
