@@ -6,15 +6,31 @@ use App\Utils\NewsManager;
 use App\Utils\CommentManager;
 use App\Classes\News;
 use App\Classes\Comment;
+use Mockery;
 
+/**
+ * Class NewsControllerTest
+ *
+ * Unit tests for the NewsController class.
+ */
 class NewsControllerTest extends TestCase
 {
+    /**
+     * Clean up Mockery after each test.
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testDisplayNews()
+    /**
+     * Test the displayNews method of the NewsController class.
+     *
+     * @return void
+     */
+    public function testDisplayNews(): void
     {
         // Mock NewsManager
         $newsManagerMock = Mockery::mock(NewsManager::class);

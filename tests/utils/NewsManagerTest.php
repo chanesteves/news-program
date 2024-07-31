@@ -4,15 +4,31 @@ use App\Classes\News;
 use App\Database\MySQLConnection;
 use App\Utils\NewsManager;
 use PHPUnit\Framework\TestCase;
+use Mockery;
 
+/**
+ * Class NewsManagerTest
+ *
+ * Unit tests for the NewsManager class.
+ */
 class NewsManagerTest extends TestCase
 {
+    /**
+     * Clean up Mockery after each test.
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testListNews()
+    /**
+     * Test the listNews method of the NewsManager class.
+     *
+     * @return void
+     */
+    public function testListNews(): void
     {
         $dbMock = Mockery::mock(MySQLConnection::class);
         $dbMock->shouldReceive('select')

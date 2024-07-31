@@ -4,15 +4,31 @@ use App\Classes\Comment;
 use App\Database\MySQLConnection;
 use App\Utils\CommentManager;
 use PHPUnit\Framework\TestCase;
+use Mockery;
 
+/**
+ * Class CommentManagerTest
+ *
+ * Unit tests for the CommentManager class.
+ */
 class CommentManagerTest extends TestCase
 {
+    /**
+     * Clean up Mockery after each test.
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testListCommentsForNews()
+    /**
+     * Test the listCommentsForNews method of the CommentManager class.
+     *
+     * @return void
+     */
+    public function testListCommentsForNews(): void
     {
         $dbMock = Mockery::mock(MySQLConnection::class);
         $dbMock->shouldReceive('select')
