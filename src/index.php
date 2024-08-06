@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/bootstrap.php';
 
-use App\Controllers\NewsController;
+use App\Controller\NewsController;
 use App\Database\MySQLConnection;
-use App\Utils\NewsManager;
-use App\Utils\CommentManager;
+use App\Util\NewsManager;
+use App\Util\CommentManager;
 
 /**
  * Entry point of the application.

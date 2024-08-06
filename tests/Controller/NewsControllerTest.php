@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use App\Controllers\NewsController;
-use App\Utils\NewsManager;
-use App\Utils\CommentManager;
-use App\Classes\News;
-use App\Classes\Comment;
+use App\Controller\NewsController;
+use App\Util\NewsManager;
+use App\Util\CommentManager;
+use App\Model\News;
+use App\Model\Comment;
 use Mockery;
 
 /**

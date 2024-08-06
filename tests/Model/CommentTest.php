@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use App\Classes\Comment;
+use App\Model\Comment;
 
 /**
  * Class CommentTest

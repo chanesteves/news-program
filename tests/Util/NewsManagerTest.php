@@ -1,8 +1,8 @@
 <?php
 
-use App\Classes\News;
+use App\Model\News;
 use App\Database\MySQLConnection;
-use App\Utils\NewsManager;
+use App\Util\NewsManager;
 use PHPUnit\Framework\TestCase;
 use Mockery;
 

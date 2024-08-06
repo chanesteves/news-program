@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factory;
 
-use App\Classes\Comment;
+use App\Model\Comment;
 
 class CommentFactory
 {

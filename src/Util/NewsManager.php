@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Utils;
+namespace App\Util;
 
-use App\Classes\News;
+use App\Model\News;
 use App\Database\MySQLConnection;
-use App\Factories\NewsFactory;
-use App\Repositories\NewsRepository;
+use App\Factory\NewsFactory;
+use App\Repository\NewsRepository;
 
 class NewsManager extends AbstractManager
 {

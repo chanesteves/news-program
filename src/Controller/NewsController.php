@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controller;
 
-use App\Utils\NewsManager;
-use App\Utils\CommentManager;
-use App\Classes\News;
-use App\Classes\Comment;
+use App\Util\NewsManager;
+use App\Util\CommentManager;
+use App\Model\News;
+use App\Model\Comment;
 
 class NewsController
 {

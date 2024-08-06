@@ -1,8 +1,8 @@
 <?php
 
-use App\Classes\Comment;
+use App\Model\Comment;
 use App\Database\MySQLConnection;
-use App\Utils\CommentManager;
+use App\Util\CommentManager;
 use PHPUnit\Framework\TestCase;
 use Mockery;
 

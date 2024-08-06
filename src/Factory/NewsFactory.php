@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Factories;
+namespace App\Factory;
 
-use App\Classes\News;
+use App\Model\News;
 
 class NewsFactory
 {

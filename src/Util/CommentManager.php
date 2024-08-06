@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Utils;
+namespace App\Util;
 
 use App\Database\MySQLConnection;
-use App\Factories\CommentFactory;
-use App\Repositories\CommentRepository;
-use App\Classes\Comment;
+use App\Factory\CommentFactory;
+use App\Repository\CommentRepository;
+use App\Model\Comment;
 
 class CommentManager extends AbstractManager
 {
