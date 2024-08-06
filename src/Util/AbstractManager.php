@@ -13,7 +13,7 @@ abstract class AbstractManager
 
     /**
      * Get the instance of the derived manager class.
-     * 
+     *
      * @param MySQLConnection $db
      * @return static
      */

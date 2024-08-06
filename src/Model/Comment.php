@@ -26,7 +26,7 @@ class Comment
 
     /**
      * Set the ID of the comment.
-     * 
+     *
      * @param int $id
      * @return self
      */
@@ -38,7 +38,7 @@ class Comment
 
     /**
      * Get the ID of the comment.
-     * 
+     *
      * @return int
      */
     public function getId(): int
@@ -48,7 +48,7 @@ class Comment
 
     /**
      * Set the body of the comment.
-     * 
+     *
      * @param string $body
      * @return self
      */
@@ -60,7 +60,7 @@ class Comment
 
     /**
      * Get the body of the comment.
-     * 
+     *
      * @return string
      */
     public function getBody(): string
@@ -70,7 +70,7 @@ class Comment
 
     /**
      * Set the creation date of the comment.
-     * 
+     *
      * @param \DateTime $createdAt
      * @return self
      */
@@ -82,7 +82,7 @@ class Comment
 
     /**
      * Get the creation date of the comment.
-     * 
+     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -92,7 +92,7 @@ class Comment
 
     /**
      * Set the ID of the related news.
-     * 
+     *
      * @param int $newsId
      * @return self
      */
@@ -104,7 +104,7 @@ class Comment
 
     /**
      * Get the ID of the related news.
-     * 
+     *
      * @return int
      */
     public function getNewsId(): int

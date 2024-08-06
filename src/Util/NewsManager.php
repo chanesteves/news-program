@@ -21,7 +21,7 @@ class NewsManager extends AbstractManager
 
     /**
      * NewsManager constructor.
-     * 
+     *
      * @param MySQLConnection $db
      */
     protected function __construct(MySQLConnection $db)
@@ -32,7 +32,7 @@ class NewsManager extends AbstractManager
 
     /**
      * List all news items.
-     * 
+     *
      * @return News[]
      */
     public function listNews(): array
@@ -48,7 +48,7 @@ class NewsManager extends AbstractManager
 
     /**
      * Add a news item.
-     * 
+     *
      * @param string $title
      * @param string $body
      * @return string
@@ -60,7 +60,7 @@ class NewsManager extends AbstractManager
 
     /**
      * Delete a news item by ID and its related comments.
-     * 
+     *
      * @param int $id
      * @return bool
      */

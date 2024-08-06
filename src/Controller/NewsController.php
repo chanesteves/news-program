@@ -30,7 +30,7 @@ class NewsController
 
     /**
      * Display all news and their comments.
-     * 
+     *
      * @return void
      */
     public function displayNews(): void

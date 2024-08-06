@@ -13,7 +13,7 @@ class NewsRepository
 
     /**
      * NewsRepository constructor.
-     * 
+     *
      * @param MySQLConnection $db
      */
     public function __construct(MySQLConnection $db)
@@ -23,7 +23,7 @@ class NewsRepository
 
     /**
      * Find all news.
-     * 
+     *
      * @return array
      */
     public function findAll(): array
@@ -33,7 +33,7 @@ class NewsRepository
 
     /**
      * Save a new news item.
-     * 
+     *
      * @param string $title
      * @param string $body
      * @return string
@@ -52,7 +52,7 @@ class NewsRepository
 
     /**
      * Delete a news item by ID.
-     * 
+     *
      * @param int $id
      * @return bool
      */

@@ -8,7 +8,7 @@ class NewsFactory
 {
     /**
      * Create a new News instance from the provided data array.
-     * 
+     *
      * @param array $data
      * @return News
      */

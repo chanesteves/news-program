@@ -16,7 +16,7 @@ class CommentManager extends AbstractManager
 
     /**
      * CommentManager constructor.
-     * 
+     *
      * @param MySQLConnection $db
      */
     protected function __construct(MySQLConnection $db)
@@ -26,7 +26,7 @@ class CommentManager extends AbstractManager
 
     /**
      * List comments for a specific news item.
-     * 
+     *
      * @param int $newsId
      * @return Comment[]
      */
@@ -43,7 +43,7 @@ class CommentManager extends AbstractManager
 
     /**
      * Add a comment for a specific news item.
-     * 
+     *
      * @param string $body
      * @param int $newsId
      * @return string
@@ -55,7 +55,7 @@ class CommentManager extends AbstractManager
 
     /**
      * Delete a comment by ID.
-     * 
+     *
      * @param int $id
      * @return bool
      */

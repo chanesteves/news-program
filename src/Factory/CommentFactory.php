@@ -8,7 +8,7 @@ class CommentFactory
 {
     /**
      * Create a new Comment instance from the provided data array.
-     * 
+     *
      * @param array $data
      * @return Comment
      */

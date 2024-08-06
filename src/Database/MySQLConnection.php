@@ -16,7 +16,7 @@ class MySQLConnection
 
     /**
      * MySQLConnection constructor.
-     * 
+     *
      * @throws \Exception
      */
     public function __construct(\PDO $pdo = null)
@@ -32,12 +32,12 @@ class MySQLConnection
                 error_log($message);
                 throw new \Exception($message);
             }
-		}
+        }
     }
 
     /**
      * Get the instance of the MySQLConnection class.
-     * 
+     *
      * @return MySQLConnection
      */
     public static function getInstance(): MySQLConnection
@@ -52,7 +52,7 @@ class MySQLConnection
 
     /**
      * Execute a select query.
-     * 
+     *
      * @param string $sql
      * @param array $params
      * @return array
@@ -74,7 +74,7 @@ class MySQLConnection
 
     /**
      * Execute an SQL statement.
-     * 
+     *
      * @param string $sql
      * @param array $params
      * @return int
@@ -96,7 +96,7 @@ class MySQLConnection
 
     /**
      * Get the ID of the last inserted row.
-     * 
+     *
      * @return string
      */
     public function lastInsertId(): string

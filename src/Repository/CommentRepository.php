@@ -13,7 +13,7 @@ class CommentRepository
 
     /**
      * CommentRepository constructor.
-     * 
+     *
      * @param MySQLConnection $db
      */
     public function __construct(MySQLConnection $db)
@@ -23,7 +23,7 @@ class CommentRepository
 
     /**
      * Find all comments.
-     * 
+     *
      * @return array
      */
     public function findAll(): array
@@ -33,7 +33,7 @@ class CommentRepository
 
     /**
      * Find comments by news ID.
-     * 
+     *
      * @param int $newsId
      * @return array
      */
@@ -44,7 +44,7 @@ class CommentRepository
 
     /**
      * Save a new comment.
-     * 
+     *
      * @param string $body
      * @param int $newsId
      * @return string
@@ -63,7 +63,7 @@ class CommentRepository
 
     /**
      * Delete a comment by ID.
-     * 
+     *
      * @param int $id
      * @return bool
      */

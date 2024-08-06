@@ -26,7 +26,7 @@ class News
 
     /**
      * Set the ID of the news.
-     * 
+     *
      * @param int $id
      * @return self
      */
@@ -38,7 +38,7 @@ class News
 
     /**
      * Get the ID of the news.
-     * 
+     *
      * @return int
      */
     public function getId(): int
@@ -48,7 +48,7 @@ class News
 
     /**
      * Set the title of the news.
-     * 
+     *
      * @param string $title
      * @return self
      */
@@ -60,7 +60,7 @@ class News
 
     /**
      * Get the title of the news.
-     * 
+     *
      * @return string
      */
     public function getTitle(): string
@@ -70,7 +70,7 @@ class News
 
     /**
      * Set the body of the news.
-     * 
+     *
      * @param string $body
      * @return self
      */
@@ -82,7 +82,7 @@ class News
 
     /**
      * Get the body of the news.
-     * 
+     *
      * @return string
      */
     public function getBody(): string
@@ -92,7 +92,7 @@ class News
 
     /**
      * Set the creation date of the news.
-     * 
+     *
      * @param \DateTime $createdAt
      * @return self
      */
@@ -104,7 +104,7 @@ class News
 
     /**
      * Get the creation date of the news.
-     * 
+     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
