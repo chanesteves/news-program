@@ -6,7 +6,6 @@ use App\Util\NewsManager;
 use App\Util\CommentManager;
 use App\Model\News;
 use App\Model\Comment;
-use Mockery;
 
 /**
  * Class NewsControllerTest
