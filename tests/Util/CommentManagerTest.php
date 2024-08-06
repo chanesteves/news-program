@@ -4,7 +4,6 @@ use App\Model\Comment;
 use App\Database\MySQLConnection;
 use App\Util\CommentManager;
 use PHPUnit\Framework\TestCase;
-use Mockery;
 
 /**
  * Class CommentManagerTest

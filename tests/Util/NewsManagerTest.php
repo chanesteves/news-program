@@ -4,7 +4,6 @@ use App\Model\News;
 use App\Database\MySQLConnection;
 use App\Util\NewsManager;
 use PHPUnit\Framework\TestCase;
-use Mockery;
 
 /**
  * Class NewsManagerTest
